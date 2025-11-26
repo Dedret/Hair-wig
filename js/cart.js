@@ -1,5 +1,10 @@
 // Cart Management Functions
 
+// Configuration constants
+const FREE_SHIPPING_THRESHOLD = 100;
+const SHIPPING_COST = 15;
+const TAX_RATE = 0.1; // 10%
+
 // Get cart from localStorage
 function getCart() {
     const cart = localStorage.getItem('cart');
@@ -62,8 +67,8 @@ function updateQuantity(productId, quantity) {
 function getCartTotals() {
     const cart = getCart();
     const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    const shipping = subtotal > 100 ? 0 : 15; // Free shipping over $100
-    const tax = subtotal * 0.1; // 10% tax
+    const shipping = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+    const tax = subtotal * TAX_RATE;
     const total = subtotal + shipping + tax;
     
     return {

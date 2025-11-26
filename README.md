@@ -34,6 +34,8 @@ Simply open `index.html` in a web browser to view the website locally. No build 
 
 ### 2. Payment Gateway Configuration
 
+**Important:** The placeholder API keys in the code are for demo purposes only and should never be used in production. Replace them with your actual keys before deploying.
+
 #### Stripe Setup
 1. Sign up for a Stripe account at [https://stripe.com](https://stripe.com)
 2. Get your publishable key from the Stripe Dashboard
@@ -42,6 +44,7 @@ Simply open `index.html` in a web browser to view the website locally. No build 
    ```javascript
    const STRIPE_PUBLISHABLE_KEY = 'pk_test_your_actual_key_here';
    ```
+   **Note:** Never commit real API keys to version control. Use environment variables or configuration files in production.
 
 #### PayPal Setup
 1. Sign up for a PayPal Developer account at [https://developer.paypal.com](https://developer.paypal.com)
