@@ -91,6 +91,7 @@
     <script>
         // Clear cart after successful order
         window.addEventListener('DOMContentLoaded', () => {
+            clearCart();
             updateCartCount();
             // Generate random order number
             const orderNum = 'ORD-' + Math.random().toString(36).substring(2, 11).toUpperCase();

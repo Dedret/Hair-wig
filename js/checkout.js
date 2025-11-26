@@ -90,7 +90,7 @@ function initializeStripe() {
             }
         });
     } catch (error) {
-        console.log('Stripe initialization note: Please add your Stripe publishable key');
+        console.info('Stripe initialization note: Please add your Stripe publishable key');
         // Show demo mode message
         const cardElement = document.getElementById('card-element');
         cardElement.innerHTML = `
@@ -130,7 +130,7 @@ function initializePayPal() {
             }
         }).render('#paypal-button-container');
     } catch (error) {
-        console.log('PayPal initialization note: Please add your PayPal client ID');
+        console.info('PayPal initialization note: Please add your PayPal client ID');
         const paypalContainer = document.getElementById('paypal-button-container');
         if (paypalContainer) {
             paypalContainer.innerHTML = `
