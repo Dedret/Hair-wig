@@ -93,7 +93,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             updateCartCount();
             // Generate random order number
-            const orderNum = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const orderNum = 'ORD-' + Math.random().toString(36).substring(2, 11).toUpperCase();
             document.getElementById('order-number').textContent = '#' + orderNum;
         });
     </script>
