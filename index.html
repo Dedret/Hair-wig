@@ -36,6 +36,15 @@
       top: -8px;
       right: -10px;
     }
+    .checkout-link {
+      position: absolute;
+      top: 1.1rem;
+      right: 4.8rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
     main {
       max-width: 1000px;
       margin: 2rem auto;
@@ -81,6 +90,8 @@
       cursor: pointer;
       font-weight: bold;
       text-align: center;
+      text-decoration: none;
+      display: inline-block;
     }
     .btn:hover {
       background: #0056b3;
@@ -92,6 +103,11 @@
       color: white;
       margin-top: 3rem;
     }
+    .checkout-section {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -99,6 +115,11 @@
 <header>
   <h1>Natural Hair Wigs Store</h1>
   <p>High quality, stylish wigs made from 100% human hair</p>
+
+  <!-- Checkout text link -->
+  <a href="checkout.html" class="checkout-link">Checkout</a>
+
+  <!-- Cart icon with count -->
   <div class="cart-icon" title="Cart">
     🛒
     <span class="cart-count" id="cart-count">0</span>
@@ -106,28 +127,36 @@
 </header>
 
 <main>
+  <!-- Product 1 -->
   <div class="product">
     <img src="images/wig1.jpg" alt="Premium Natural Hair Wig" />
     <h2>Premium Natural Hair Wig</h2>
     <p>Elegant and soft, available in multiple styles and lengths.</p>
     <div class="price">₹2000</div>
-    <button class="btn" onclick="addToCart('Premium Natural Hair Wig')">Add to Cart</button>
+    <button class="btn" onclick="addToCart('Premium Natural Hair Wig', 2000)">Add to Cart</button>
   </div>
 
+  <!-- Product 2 -->
   <div class="product">
     <img src="images/wig2.jpg" alt="Stylish Curly Hair Wig" />
     <h2>Stylish Curly Hair Wig</h2>
     <p>Natural curls that are easy to maintain and style.</p>
     <div class="price">₹2500</div>
-    <button class="btn" onclick="addToCart('Stylish Curly Hair Wig')">Add to Cart</button>
+    <button class="btn" onclick="addToCart('Stylish Curly Hair Wig', 2500)">Add to Cart</button>
   </div>
 
+  <!-- Product 3 -->
   <div class="product">
     <img src="images/wig3.jpg" alt="Long Straight Hair Wig" />
     <h2>Long Straight Hair Wig</h2>
     <p>Sleek straight wig for a classic look, lightweight and breathable.</p>
     <div class="price">₹2300</div>
-    <button class="btn" onclick="addToCart('Long Straight Hair Wig')">Add to Cart</button>
+    <button class="btn" onclick="addToCart('Long Straight Hair Wig', 2300)">Add to Cart</button>
+  </div>
+
+  <!-- Big checkout button in main area -->
+  <div class="checkout-section">
+    <a href="checkout.html" class="btn">Go to Checkout</a>
   </div>
 </main>
 
@@ -136,11 +165,20 @@
 </footer>
 
 <script>
-  let cartCount = 0;
-  function addToCart(productName) {
-    cartCount++;
-    document.getElementById('cart-count').textContent = cartCount;
-    alert(productName + ' added to cart.');
+  // Simple cart using localStorage so checkout page can read it
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  updateCartCount();
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert(name + ' added to cart.');
+  }
+
+  function updateCartCount() {
+    const count = cart.length;
+    document.getElementById('cart-count').textContent = count;
   }
 </script>
 
