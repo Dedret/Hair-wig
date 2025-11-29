@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - Natural Hair Wigs Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f8f8f8;
+    }
+    header {
+      background: #333;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    main {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+    }
+    h1 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .cart-items {
+      margin-bottom: 2rem;
+    }
+    .cart-item {
+      border-bottom: 1px solid #ddd;
+      padding: 0.5rem 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      margin-top: 0.75rem;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 1.5rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Checkout</h1>
+</header>
+
+<main>
+  <h2>Your Cart</h2>
+  <div class="cart-items" id="cart-items">
+    <!-- Cart items will be rendered here -->
+  </div>
+
+  <h2>Shipping Details</h2>
+  <form id="checkout-form">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="address">Address</label>
+    <textarea id="address" name="address" rows="3" required></textarea>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <button type="submit">Place Order</button>
+  </form>
+</main>
+
+<script>
+  // For demo, sample cart items
+  const cartItems = [
+    { name: "Premium Natural Hair Wig", price: 2000, quantity: 1 },
+    { name: "Stylish Curly Hair Wig", price: 2500, quantity: 2 }
+  ];
+
+  // Render cart items
+  const cartItemsDiv = document.getElementById('cart-items');
+  cartItems.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <span>${item.name} (x${item.quantity})</span>
+      <span>₹${item.price * item.quantity}</span>
+    `;
+    cartItemsDiv.appendChild(div);
+  });
+
+  // Handle form submit
+  const form = document.getElementById('checkout-form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Order placed successfully! Thank you for shopping.');
+    form.reset();
+    // Here you can add code to process order data or connect payment gateway
+  });
+</script>
+
+</body>
+</html>
